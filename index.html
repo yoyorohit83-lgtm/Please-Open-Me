@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ritu Kumari — Afreen Afreen</title>
+  <meta name="theme-color" content="#121212" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div class="topbar">
+        <span class="back">‹</span>
+        <span class="eyebrow">A PRIVATE LISTENING EXPERIENCE</span>
+        <span class="dots">•••</span>
+      </div>
+
+      <div class="cover-wrap">
+        <img src="ritu.jpg" alt="Ritu Kumari" class="cover" />
+        <div class="cover-glow"></div>
+      </div>
+
+      <div class="intro">
+        <p class="made-for">MADE FOR</p>
+        <h1>Ritu Kumari</h1>
+        <p class="subline">21 AUGUST • CHAPTER 28</p>
+      </div>
+    </section>
+
+    <section class="player-card">
+      <div class="song-row">
+        <div>
+          <h2>Afreen Afreen</h2>
+          <p>Rahat Fateh Ali Khan &amp; Momina Mustehsan</p>
+        </div>
+        <button class="heart" aria-label="Favorite">♡</button>
+      </div>
+
+      <div class="progress">
+        <span></span>
+      </div>
+      <div class="time">
+        <span>0:00</span><span>6:40</span>
+      </div>
+
+      <div class="controls">
+        <span>↺</span>
+        <span class="previous">‹‹</span>
+        <button id="playBtn" class="play" aria-label="Play">▶</button>
+        <span class="next">››</span>
+        <span>↻</span>
+      </div>
+    </section>
+
+    <section class="note">
+      <span class="quote-mark">“</span>
+      <p>For the one who somehow made this song sound different.</p>
+      <span class="quote-mark end">”</span>
+    </section>
+
+    <section class="details">
+      <div class="detail">
+        <span class="label">ONE LISTENER</span>
+        <strong>One muse. Countless replays.</strong>
+      </div>
+      <div class="detail">
+        <span class="label">THE OCCASION</span>
+        <strong>A little birthday memory, made to stay.</strong>
+      </div>
+    </section>
+
+    <section class="video-section" id="videoSection">
+      <div class="section-heading">
+        <span>THE FILM</span>
+        <small>A small collection of moments</small>
+      </div>
+      <video id="tributeVideo" controls playsinline poster="ritu.jpg">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+      <p class="video-help">To add the finished tribute video, place it in this folder and name it <b>video.mp4</b>.</p>
+    </section>
+
+    <section class="spotify">
+      <div class="section-heading">
+        <span>LISTEN ON SPOTIFY</span>
+        <small>The song that inspired this page</small>
+      </div>
+      <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/track/7pBcon5GqvUfn58HRfF8wv?utm_source=generator"
+        width="100%"
+        height="152"
+        frameborder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+    </section>
+
+    <footer>
+      Made quietly, for one person.
+    </footer>
+  </main>
+
+  <script>
+    const playBtn = document.getElementById('playBtn');
+    const video = document.getElementById('tributeVideo');
+
+    playBtn.addEventListener('click', async () => {
+      try {
+        if (video.paused) {
+          await video.play();
+          playBtn.textContent = '❚❚';
+        } else {
+          video.pause();
+          playBtn.textContent = '▶';
+        }
+      } catch (e) {
+        document.querySelector('.video-help').scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    });
+
+    video.addEventListener('pause', () => playBtn.textContent = '▶');
+    video.addEventListener('play', () => playBtn.textContent = '❚❚');
+  </script>
+</body>
+</html>
